@@ -18,12 +18,9 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll("[data-appstore]").forEach((el) => {
     if (APP_STORE_LIVE) {
       el.setAttribute("href", APP_STORE_URL);
-      el.style.pointerEvents = "auto";
-      el.style.opacity = "1";
-      const small = el.querySelector(".small");
-      const big = el.querySelector(".big");
-      if (small) small.textContent = "Download on the";
-      if (big) big.textContent = "App Store";
+      el.setAttribute("aria-label", "Download on the App Store");
+      el.removeAttribute("aria-disabled");
+      el.classList.remove("is-coming-soon");
     }
   });
 

@@ -151,27 +151,48 @@ p { margin: 0 0 1em; }
   color: var(--navy-deep);
 }
 
-/* App Store "coming soon" badge */
+/* App Store badge */
 .badge-wrap { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
 .app-badge {
   display: inline-flex;
+  flex-direction: column;
   align-items: center;
-  gap: 10px;
-  background: var(--navy);
-  color: var(--white);
+  gap: 8px;
   text-decoration: none;
-  padding: 12px 20px;
-  border-radius: 14px;
-  font-weight: 800;
-  box-shadow: 0 6px 0 var(--navy-deep), 0 10px 18px var(--shadow);
-  transition: transform 0.12s ease, box-shadow 0.12s ease;
-  pointer-events: none;
-  opacity: 0.95;
+  transition: transform 0.12s ease, filter 0.12s ease;
 }
-.app-badge .apple { font-size: 1.4rem; line-height: 1; }
-.app-badge .lines { display: flex; flex-direction: column; text-align: left; line-height: 1.1; }
-.app-badge .small { font-size: 0.72rem; font-weight: 600; opacity: 0.85; }
-.app-badge .big { font-size: 1.05rem; }
+.app-badge img {
+  width: 200px;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  box-shadow: 0 6px 0 var(--navy-deep), 0 10px 18px var(--shadow);
+}
+.app-badge:hover { transform: translateY(-2px); }
+.app-badge:active { transform: translateY(1px); }
+.app-badge .badge-caption {
+  display: none;
+  background: var(--yellow);
+  color: var(--brown-text);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.72rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+  box-shadow: 0 2px 0 rgba(0,0,0,0.12);
+}
+.app-badge.is-coming-soon {
+  pointer-events: none;
+  cursor: default;
+}
+.app-badge.is-coming-soon img {
+  filter: saturate(0.85);
+  opacity: 0.9;
+}
+.app-badge.is-coming-soon .badge-caption {
+  display: inline-block;
+}
 
 /* decorative floating coins */
 .coin {
